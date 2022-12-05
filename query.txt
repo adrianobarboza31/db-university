@@ -1,0 +1,16 @@
+es1.
+SELECT * FROM `students` WHERE YEAR(date_of_birth)=1990;
+es2.
+SELECT * FROM `courses` WHERE `cfu`>10;
+ese3.
+SELECT * FROM `students` WHERE YEAR(`date_of_birth`) BETWEEN '1920' AND '1992';
+es4.
+SELECT * FROM `courses` WHERE `period`='I semestre' AND `year`=1;
+es5.
+SELECT * FROM `exams` WHERE `date`='2020-06-20' AND`hour` BETWEEN '14:00:00' AND '23:00:00';
+es6.
+SELECT * FROM `degrees` WHERE `level`='magistrale';
+es.7
+SELECT COUNT('id') FROM `departments`;
+es.8
+SELECT COUNT('id') FROM `teachers` WHERE `phone`is NULL;
