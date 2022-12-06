@@ -1,0 +1,27 @@
+JOIN
+es1
+SELECT * FROM `students` JOIN `degrees` ON `degrees`.`id`=`students`.`degree_id` WHERE `degrees`.`name`='Corso di Laurea in Economia';
+es2
+SELECT * FROM `degrees` JOIN `departments` ON `departments`.`id`=`degrees`.`department_id` WHERE `degrees`.`level`='magistrale';
+es3
+SELECT * FROM `courses` JOIN `course_teacher` ON `course_teacher`.`course_id`=`courses`.`id` JOIN `teachers` ON `teachers`.`id`= `course_teacher`.`teacher_id` 
+WHERE `teachers`.`name`='Fulvio' AND `teachers`.`surname`='Amato';
+es4
+SELECT `students`.*,`degrees`.`name`,`departments`.`name` FROM `students` JOIN `degrees` ON `degrees`.`id`= `students`.`degree_id` JOIN `departments` ON `departments`.`id`=`degrees`.`department_id` 
+ORDER BY `students`.`surname` ASC;
+es5
+SELECT `degrees`.`name`,`teachers`.*,`courses`.`name` FROM `degrees` JOIN `courses` ON `courses`.`degree_id`=`degrees`.`id` JOIN `course_teacher` ON `course_teacher`.`course_id`=`courses`.`id` 
+JOIN `teachers` ON `teachers`.`id`=`course_teacher`.`teacher_id`;
+es6
+SELECT DISTINCT`teachers`.* FROM `teachers` JOIN `course_teacher` ON `course_teacher`.`teacher_id`=`teachers`.`id` JOIN `courses` ON `courses`.`id`=`course_teacher`.`course_id` JOIN `degrees` ON `degrees`.`id`=`courses`.`degree_id` 
+JOIN `departments` ON `departments`.`id`=`degrees`.`department_id` WHERE `departments`.`name`='Dipartimento di Matematica';
+es7
+GROP BY
+es1
+SELECT COUNT(`id`),YEAR(`enrolment_date`) FROM `students` GROUP BY YEAR(`enrolment_date`);
+es2
+SELECT COUNT(`id`),`office_address` FROM `teachers` GROUP BY `office_address`;
+es3
+SELECT AVG(`vote`),`exam_id` FROM `exam_student` GROUP BY `exam_id`;
+es4
+SELECT COUNT(`degrees`.`id`),`departments`.`name` FROM `degrees` JOIN `departments` ON `departments`.`id`= `degrees`.`department_id` GROUP BY `departments`.`id`;
